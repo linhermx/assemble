@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "assemble"
+version = "0.1.0"
+description = "Herramienta interna para calcular capacidad de produccion de hornos a partir de checklist e inventario estandar."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "pandas",
+  "openpyxl",
+  "xlsxwriter",
+  "requests"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
