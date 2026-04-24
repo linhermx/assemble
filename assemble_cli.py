@@ -15,10 +15,10 @@ from assemble.core import calculate_capacity
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Calcula la capacidad de producción de hornos usando checklist e inventario estándar."
+        description="Calcula la capacidad de produccion de hornos usando checklist e inventario estandar."
     )
-    parser.add_argument("--checklist", required=True, help="Ruta al checklist estándar")
-    parser.add_argument("--inventory", required=True, help="Ruta al inventario estándar")
+    parser.add_argument("--checklist", required=True, help="Ruta al checklist estandar")
+    parser.add_argument("--inventory", required=True, help="Ruta al inventario estandar")
     parser.add_argument("--outdir", default="salida", help="Carpeta de salida")
     parser.add_argument("--target", type=int, default=1, help="Objetivo de hornos a simular")
     parser.add_argument("--overwrite", action="store_true", help="Sobrescribir si el reporte ya existe")
@@ -34,7 +34,7 @@ def main():
 
     print(f"Modelo: {result.model_name}")
     print(f"Hornos completos posibles hoy: {'No determinado' if result.current_capacity is None else result.current_capacity}")
-    print(f"Material más limitante: {result.bottleneck_material or 'N/A'}")
+    print(f"Material mas limitante: {result.bottleneck_material or 'N/A'}")
     print(f"Materiales faltantes para el siguiente horno: {len(result.next_shortages_frame)}")
     print(f"Materiales faltantes para {result.target_ovens} horno(s): {len(result.target_shortages_frame)}")
     print(f"Reporte: {result.report_file}")

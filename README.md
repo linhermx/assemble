@@ -193,7 +193,7 @@ Si no existe una release publicada, el launcher cae localmente a `assemble_gui.p
 ### Uso básico por CLI
 
 ```powershell
-python .\assemble.py `
+python .\assemble_cli.py `
   --checklist "examples\goliat_premium_standardized\checklist_goliat_premium_estandar.xlsx" `
   --inventory "examples\goliat_premium_standardized\inventario_global_estandar.xlsx" `
   --outdir "salida" `

@@ -30,6 +30,10 @@ pyinstaller `
   --clean `
   --onefile `
   --windowed `
+  --paths ".\src" `
+  --hidden-import assemble `
+  --hidden-import assemble.gui `
+  --hidden-import assemble.core `
   --icon $iconPath `
   --name assemble_windows `
   assemble_gui.py
