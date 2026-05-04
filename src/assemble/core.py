@@ -392,8 +392,16 @@ def calculate_capacity(
             f"hay {item['Existencia actual']} {item['Unidad']}"
         )
 
-    next_shortages_frame = _build_shortage_frame(aggregated_checklist_frame, next_target, "Faltante para siguiente horno")
-    target_shortages_frame = _build_shortage_frame(aggregated_checklist_frame, target_ovens, "Faltante para objetivo")
+    next_shortages_frame = _build_shortage_frame(
+        aggregated_checklist_frame,
+        next_target,
+        "Faltante para el siguiente horno",
+    )
+    target_shortages_frame = _build_shortage_frame(
+        aggregated_checklist_frame,
+        target_ovens,
+        "Faltante para el objetivo",
+    )
 
     excluded_frame = excluded[
         ["modelo_nombre", "secciones", "descripcion_material", "unidad_consumo", "cantidad_por_horno", "observaciones"]
