@@ -4,6 +4,7 @@ import ctypes
 import math
 import os
 import subprocess
+import sys
 import threading
 from ctypes import wintypes
 from pathlib import Path
@@ -18,9 +19,11 @@ from assemble.core import RunIssue, RunResult, calculate_capacity
 
 class LinherAssembleApp(tk.Tk):
     def __init__(self):
+        self._set_windows_app_id()
         super().__init__()
         self.withdraw()
         self.title(f"LINHER Assemble (v{__version__})")
+        self._apply_window_icon()
 
         self.checklist_path = tk.StringVar(value="")
         self.inventory_path = tk.StringVar(value="")
@@ -47,6 +50,29 @@ class LinherAssembleApp(tk.Tk):
         self._reset_results()
         self._configure_window()
         self.deiconify()
+
+    def _set_windows_app_id(self):
+        if os.name != "nt":
+            return
+        try:
+            ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("LINHER.Assemble")
+        except Exception:
+            pass
+
+    def _resource_path(self, relative_name: str) -> Path:
+        if getattr(sys, "frozen", False):
+            bundle_dir = Path(getattr(sys, "_MEIPASS", Path(sys.executable).resolve().parent))
+            return bundle_dir / "resources" / relative_name
+        return Path(__file__).resolve().parent / "resources" / relative_name
+
+    def _apply_window_icon(self):
+        icon_path = self._resource_path("assemble.ico")
+        if not icon_path.exists():
+            return
+        try:
+            self.iconbitmap(default=str(icon_path))
+        except Exception:
+            pass
 
     def _apply_style(self):
         style = ttk.Style(self)

@@ -34,6 +34,7 @@ pyinstaller `
   --hidden-import assemble `
   --hidden-import assemble.gui `
   --hidden-import assemble.core `
+  --add-data "src\assemble\resources\assemble.ico;resources" `
   --icon $iconPath `
   --name assemble_windows `
   assemble_gui.py
