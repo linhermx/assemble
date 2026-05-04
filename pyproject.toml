@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "assemble"
-version = "1.0.0"
+version = "1.0.1"
 description = "Herramienta interna para calcular capacidad de produccion de hornos a partir de checklist e inventario estandar."
 readme = "README.md"
 requires-python = ">=3.10"
